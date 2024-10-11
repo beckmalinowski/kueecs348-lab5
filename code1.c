@@ -47,7 +47,7 @@ int main() {
     printf("Average sales: %.2f\n", sales_avg);
 
     printf("\nSix-Month moving average report:\n\n");
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < 7; i++) {
         float sales_avg = six_month_average(sales, i);
         char range[18];
         snprintf(range, 18, "%s-%s", months[i], months[i + 5]);
@@ -107,7 +107,7 @@ float average(float sales[]) {
 float six_month_average(float sales[], int start) {
     /* return the six-month average (start, start + 5) of sales[]. */
     float res = 0;
-    for (int i = start; i < (start + 5); i++) {
+    for (int i = start; i < (start + 6); i++) {
         res += sales[i];
     }
     return res / 6;
