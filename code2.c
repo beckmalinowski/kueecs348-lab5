@@ -1,55 +1,10 @@
-#include <stdlib.h>
 #include <stdio.h>
 #define SIZE 5
 
-void printMatrix(int m[SIZE][SIZE]) {
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            printf("%d ", m[i][j]);
-        }
-        printf("\n");
-    }
-}
-
-void addMatrices(int m1[SIZE][SIZE], int m2[SIZE][SIZE]) {
-    int res[SIZE][SIZE] = {{0}};
-
-    for (int i = 0; i < SIZE; i++) { // iterate rows
-        for (int j = 0; j < SIZE; j++) { // iterate columns
-            res[i][j] = m1[i][j] + m2[i][j];
-        }
-    }
-
-    printMatrix(res);
-}
-
-void multiplyMatrices(int m1[SIZE][SIZE], int m2[SIZE][SIZE]) {
-    int res[SIZE][SIZE] = {{0}}; // since the size of a multiplied matrix is m x p where
-                         // m1 is size m x n and m2 is n x p
-
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < SIZE; j++) {
-            for (int k = 0; k < SIZE; k++) {
-                // m1 should multiply by rows, m2 should multiply by columns
-                res[i][j] += (m1[i][k] * m2[k][j]);
-            }
-        }
-    }
-
-    printMatrix(res);
-}
-
-void transposeMatrix(int m[SIZE][SIZE]) {
-    int res[SIZE][SIZE] = {{0}};
-
-    for (int i = 0; i < SIZE; i++) { // iterate rows
-        for (int j = 0; j < SIZE; j++) { // iterate columns
-            res[j][i] = m[i][j];
-        }
-    }
-
-    printMatrix(res);
-}
+void printMatrix(int m[SIZE][SIZE]);
+void addMatrices(int m1[SIZE][SIZE], int m2[SIZE][SIZE]);
+void multiplyMatrices(int m1[SIZE][SIZE], int m2[SIZE][SIZE]);
+void transposeMatrix(int m[SIZE][SIZE]);
 
 int main() {
     int m1[SIZE][SIZE] = {
@@ -87,4 +42,57 @@ int main() {
 
     printf("\nm2 transposed: \n");
     transposeMatrix(m2);
+}
+
+void addMatrices(int m1[SIZE][SIZE], int m2[SIZE][SIZE]) {
+    /* prints out the sum of two matrices. */
+    int res[SIZE][SIZE] = {{0}};
+
+    for (int i = 0; i < SIZE; i++) { // iterate rows
+        for (int j = 0; j < SIZE; j++) { // iterate columns
+            res[i][j] = m1[i][j] + m2[i][j];
+        }
+    }
+
+    printMatrix(res);
+}
+
+void multiplyMatrices(int m1[SIZE][SIZE], int m2[SIZE][SIZE]) {
+    /* prints out the product of two matrices. */
+    int res[SIZE][SIZE] = {{0}}; // since the size of a multiplied matrix is m x p where
+                                 // m1 is size m x n and m2 is n x p
+
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            for (int k = 0; k < SIZE; k++) {
+                // m1 should multiply by rows, m2 should multiply by columns
+                res[i][j] += (m1[i][k] * m2[k][j]);
+            }
+        }
+    }
+
+    printMatrix(res);
+}
+
+void transposeMatrix(int m[SIZE][SIZE]) {
+    /* prints out the transpose of an matrix. */
+    int res[SIZE][SIZE] = {{0}};
+
+    for (int i = 0; i < SIZE; i++) { // iterate rows
+        for (int j = 0; j < SIZE; j++) { // iterate columns
+            res[j][i] = m[i][j];
+        }
+    }
+
+    printMatrix(res);
+}
+
+void printMatrix(int m[SIZE][SIZE]) {
+    /* prints out an matrix. */
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < SIZE; j++) {
+            printf("%d ", m[i][j]);
+        }
+        printf("\n");
+    }
 }
